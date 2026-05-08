@@ -1,0 +1,940 @@
+# Página Web Premium — Vinos y Licores Santander
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Vinos y Licores Santander</title>
+
+  <meta name="description"
+  content="Vinos y Licores Santander en San Luis Potosí. Venta de vinos, whisky, tequila, ron, vodka y cervezas premium.">
+
+  <meta name="keywords"
+  content="vinos, licores, tequila, whisky, San Luis Potosí">
+
+  <meta name="author"
+  content="Vinos y Licores Santander">
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#0c0c0c;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* SCROLLBAR */
+
+    ::-webkit-scrollbar{
+      width:10px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background:#d4af37;
+      border-radius:20px;
+    }
+
+    /* HEADER */
+
+    header{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      padding:15px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:rgba(0,0,0,0.8);
+      backdrop-filter:blur(10px);
+      z-index:1000;
+      border-bottom:1px solid rgba(212,175,55,0.2);
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:15px;
+    }
+
+    .logo img{
+      width:65px;
+      border-radius:10px;
+    }
+
+    .logo h2{
+      color:#d4af37;
+      font-size:24px;
+      font-weight:700;
+    }
+
+    nav{
+      display:flex;
+      align-items:center;
+      gap:28px;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:white;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    nav a:hover{
+      color:#d4af37;
+    }
+
+    .menu-btn{
+      display:none;
+      color:#d4af37;
+      font-size:28px;
+      cursor:pointer;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:120px 20px;
+      background:
+      linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+      url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=1974&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      position:relative;
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+      width:500px;
+      height:500px;
+      background:rgba(212,175,55,0.08);
+      filter:blur(120px);
+      border-radius:50%;
+      top:20%;
+      left:10%;
+    }
+
+    .hero-content{
+      max-width:950px;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-content img{
+      width:180px;
+      margin-bottom:25px;
+      border-radius:20px;
+      box-shadow:0 0 40px rgba(212,175,55,0.25);
+    }
+
+    .hero-content h1{
+      font-size:72px;
+      line-height:1.1;
+      margin-bottom:20px;
+      font-weight:800;
+    }
+
+    .gold{
+      color:#d4af37;
+    }
+
+    .hero-content p{
+      font-size:20px;
+      line-height:1.9;
+      color:#ddd;
+      margin-top:15px;
+    }
+
+    .hero-buttons{
+      margin-top:40px;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:15px 35px;
+      border-radius:50px;
+      text-decoration:none;
+      transition:0.3s;
+      font-weight:600;
+      display:inline-block;
+    }
+
+    .btn-gold{
+      background:linear-gradient(135deg,#d4af37,#f7d76d);
+      color:black;
+      box-shadow:0 0 25px rgba(212,175,55,0.3);
+    }
+
+    .btn-gold:hover{
+      transform:translateY(-5px);
+      background:white;
+    }
+
+    .btn-dark{
+      border:2px solid #d4af37;
+      color:white;
+    }
+
+    .btn-dark:hover{
+      background:#d4af37;
+      color:black;
+    }
+
+    /* SECTIONS */
+
+    section{
+      padding:100px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      color:#d4af37;
+      font-size:42px;
+      margin-bottom:10px;
+    }
+
+    .section-title p{
+      color:#bbb;
+      font-size:17px;
+    }
+
+    /* GRID */
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:30px;
+    }
+
+    /* CARDS */
+
+    .card{
+      background:#161616;
+      border-radius:25px;
+      overflow:hidden;
+      transition:0.4s;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 15px 40px rgba(0,0,0,0.5);
+    }
+
+    .card img{
+      width:100%;
+      height:280px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:25px;
+    }
+
+    .card-content h3{
+      color:#d4af37;
+      margin-bottom:10px;
+      font-size:24px;
+    }
+
+    .card-content p{
+      color:#ccc;
+      line-height:1.8;
+    }
+
+    
+
+    /* SERVICES */
+
+    .service-box{
+      background:#161616;
+      padding:45px 30px;
+      border-radius:25px;
+      text-align:center;
+      transition:0.4s;
+    }
+
+    .service-box:hover{
+      transform:translateY(-8px);
+      background:#1c1c1c;
+    }
+
+    .service-box i{
+      font-size:50px;
+      color:#d4af37;
+      margin-bottom:25px;
+    }
+
+    .service-box h3{
+      margin-bottom:15px;
+      font-size:24px;
+    }
+
+    .service-box p{
+      color:#bbb;
+      line-height:1.8;
+    }
+
+    /* PROMOS */
+
+    .promo{
+      background:linear-gradient(135deg,#1b1b1b,#111);
+      border:1px solid rgba(212,175,55,0.25);
+    }
+
+    /* MAP */
+
+    .map-container{
+      overflow:hidden;
+      border-radius:25px;
+      box-shadow:0 15px 35px rgba(0,0,0,0.5);
+    }
+
+    iframe{
+      width:100%;
+      height:500px;
+      border:none;
+    }
+
+    /* CONTACT */
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:40px;
+      align-items:center;
+    }
+
+    .contact-info{
+      background:#161616;
+      padding:40px;
+      border-radius:25px;
+    }
+
+    .contact-info p{
+      margin-bottom:20px;
+      line-height:1.8;
+      color:#ddd;
+    }
+
+    .contact-info i{
+      color:#d4af37;
+      margin-right:10px;
+    }
+
+    /* SOCIALS */
+
+    .socials{
+      margin-top:30px;
+    }
+
+    .socials a{
+      width:50px;
+      height:50px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      background:#1f1f1f;
+      color:#d4af37;
+      text-decoration:none;
+      margin-right:12px;
+      transition:0.3s;
+      font-size:20px;
+    }
+
+    .socials a:hover{
+      background:#d4af37;
+      color:black;
+      transform:translateY(-5px);
+    }
+
+    /* TESTIMONIALS */
+
+    .testimonial{
+      background:#161616;
+      padding:40px;
+      border-radius:25px;
+      text-align:center;
+    }
+
+    .testimonial p{
+      color:#ddd;
+      line-height:1.9;
+      margin-bottom:20px;
+    }
+
+    .testimonial h4{
+      color:#d4af37;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:black;
+      text-align:center;
+      padding:40px 20px;
+      color:#999;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+
+    footer h3{
+      color:#d4af37;
+      margin-bottom:15px;
+      font-size:28px;
+    }
+
+    /* WHATSAPP */
+
+    .whatsapp{
+      position:fixed;
+      bottom:25px;
+      right:25px;
+      width:65px;
+      height:65px;
+      background:#25D366;
+      color:white;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      font-size:32px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.4);
+      z-index:1000;
+      transition:0.3s;
+    }
+
+    .whatsapp:hover{
+      transform:scale(1.1);
+    }
+
+    /* TOP BUTTON */
+
+    .top-btn{
+      position:fixed;
+      bottom:105px;
+      right:25px;
+      width:55px;
+      height:55px;
+      background:#d4af37;
+      color:black;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      font-size:22px;
+      z-index:1000;
+      transition:0.3s;
+    }
+
+    .top-btn:hover{
+      transform:translateY(-5px);
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+      nav{
+        position:absolute;
+        top:90px;
+        left:0;
+        width:100%;
+        background:#111;
+        flex-direction:column;
+        padding:30px;
+        display:none;
+      }
+
+      nav.active{
+        display:flex;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+
+      .hero-content h1{
+        font-size:46px;
+      }
+
+      .hero-content p{
+        font-size:17px;
+      }
+
+      section{
+        padding:80px 6%;
+      }
+
+      .logo h2{
+        font-size:18px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="logo">
+      <h2>SANTANDER</h2>
+    </div>
+
+    <nav id="navMenu">
+      <a href="#inicio">Inicio</a>
+      <a href="#productos">Productos</a>
+      <a href="#promociones">Promociones</a>
+      <a href="#servicios">Servicios</a>
+      
+      <a href="#ubicacion">Ubicación</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="menu-btn" id="menuBtn">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+      
+
+      <h1>
+        VINOS Y LICORES
+        <span class="gold">SANTANDER</span>
+      </h1>
+
+      <p>
+        “Las mejores etiquetas para tus mejores momentos.”
+      </p>
+
+      <p>
+        Especialistas en vinos, licores y destilados premium.
+        Distribución para eventos, restaurantes, hoteles y negocios.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#productos" class="btn btn-gold">
+          Ver Productos
+        </a>
+
+        <a href="https://wa.me/524442076723"
+        target="_blank"
+        class="btn btn-dark">
+          Pedir por WhatsApp
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PRODUCTOS -->
+
+  <section id="productos">
+
+    <div class="section-title">
+      <h2>Nuestros Productos</h2>
+      <p>
+        Contamos con una amplia variedad de bebidas nacionales e internacionales.
+      </p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?q=80&w=1887&auto=format&fit=crop">
+
+        <div class="card-content">
+          <h3>Vinos Premium</h3>
+
+          <p>
+            Vinos tintos, blancos y rosados ideales para cualquier celebración.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?q=80&w=1974&auto=format&fit=crop">
+
+        <div class="card-content">
+          <h3>Whisky & Tequila</h3>
+
+          <p>
+            Las mejores marcas de destilados premium para disfrutar o regalar.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1584916201218-f4242ceb4809?q=80&w=1974&auto=format&fit=crop">
+
+        <div class="card-content">
+          <h3>Vodka & Ron</h3>
+
+          <p>
+            Amplia selección de licores y bebidas internacionales.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1609951651556-5334e2706168?q=80&w=1887&auto=format&fit=crop">
+
+        <div class="card-content">
+          <h3>Cervezas</h3>
+
+          <p>
+            Cervezas nacionales, artesanales e importadas siempre frías.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROMOCIONES -->
+
+  <section id="promociones">
+
+    <div class="section-title">
+      <h2>Promociones</h2>
+      <p>
+        Aprovecha nuestras ofertas especiales.
+      </p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card promo">
+
+        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=1974&auto=format&fit=crop">
+
+        <div class="card-content">
+          <h3>2x1 en Vinos</h3>
+
+          <p>
+            Todos los viernes en etiquetas seleccionadas.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="card promo">
+
+        <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?q=80&w=1974&auto=format&fit=crop">
+
+        <div class="card-content">
+          <h3>Whisky Premium</h3>
+
+          <p>
+            15% de descuento este mes.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SERVICIOS -->
+
+  <section id="servicios">
+
+    <div class="section-title">
+      <h2>Servicios</h2>
+      <p>
+        Atención profesional y distribución para cualquier ocasión.
+      </p>
+    </div>
+
+    <div class="grid">
+
+      <div class="service-box">
+
+        <i class="fa-solid fa-truck-fast"></i>
+
+        <h3>Entrega y Distribución</h3>
+
+        <p>
+          Servicio rápido y seguro para clientes, negocios y eventos.
+        </p>
+
+      </div>
+
+      <div class="service-box">
+
+        <i class="fa-solid fa-champagne-glasses"></i>
+
+        <h3>Eventos</h3>
+
+        <p>
+          Surtimos bebidas para fiestas, bodas y reuniones.
+        </p>
+
+      </div>
+
+      <div class="service-box">
+
+        <i class="fa-solid fa-hotel"></i>
+
+        <h3>Hoteles & Restaurantes</h3>
+
+        <p>
+          Distribución profesional para restaurantes, bares y hoteles.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- UBICACION -->
+
+  <section id="ubicacion">
+
+    <div class="section-title">
+      <h2>Ubicación</h2>
+
+      <p>
+        Visítanos y conoce nuestra selección premium.
+      </p>
+    </div>
+
+    <div class="map-container">
+
+      <iframe
+      src="https://maps.google.com/maps?q=San%20Luis%20Potosi&t=&z=13&ie=UTF8&iwloc=&output=embed"
+      loading="lazy">
+      </iframe>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACTO -->
+
+  <section id="contacto">
+
+    <div class="section-title">
+      <h2>Contacto</h2>
+
+      <p>
+        Estamos listos para atenderte.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="contact-info">
+
+        <p>
+          <i class="fa-solid fa-phone"></i>
+          444 813 4877
+        </p>
+
+        <p>
+          <i class="fa-brands fa-whatsapp"></i>
+          +52 444 207 6723
+        </p>
+
+        <p>
+          <i class="fa-solid fa-envelope"></i>
+          vinosylicoressantander@hotmail.com
+        </p>
+
+        <p>
+          <i class="fa-solid fa-clock"></i>
+          Lunes a Viernes: 11:00 AM - 7:00 PM
+        </p>
+
+        <p>
+          <i class="fa-solid fa-clock"></i>
+          Sábados: 11:00 AM - 5:00 PM
+        </p>
+
+        <div class="socials">
+
+          <a href="https://instagram.com/vinosylicoressantander"
+          target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+
+          <a href="https://www.tiktok.com/@vinos.y.licores.s7?_r=1&_t=ZS-96CJFIdOBLZ"
+          target="_blank">
+            <i class="fab fa-tiktok"></i>
+          </a>
+
+          <a href="https://wa.me/524442076723"
+          target="_blank">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="contact-info">
+
+        <h2 style="color:#d4af37;margin-bottom:20px;">
+          ¿Por qué elegirnos?
+        </h2>
+
+        <p>✔ Gran variedad de vinos y destilados.</p>
+
+        <p>✔ Atención personalizada.</p>
+
+        <p>✔ Distribución para negocios.</p>
+
+        <p>✔ Productos premium y nacionales.</p>
+
+        <p>✔ Excelente servicio y calidad.</p>
+
+        <br>
+
+        <a href="catalogo.pdf"
+        class="btn btn-gold"
+        download>
+          Descargar Catálogo
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h3>VINOS Y LICORES SANTANDER</h3>
+
+    <p>
+      © 2026 Todos los derechos reservados.
+    </p>
+
+  </footer>
+
+  <!-- BOTON ARRIBA -->
+
+  <a href="#inicio" class="top-btn">
+    <i class="fa-solid fa-arrow-up"></i>
+  </a>
+
+  <!-- WHATSAPP -->
+
+  <a href="https://wa.me/524442076723"
+  class="whatsapp"
+  target="_blank">
+
+    <i class="fab fa-whatsapp"></i>
+
+  </a>
+
+  <!-- SCRIPTS -->
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+  <script>
+
+    // MENU MOVIL
+
+    const menuBtn = document.getElementById('menuBtn');
+    const navMenu = document.getElementById('navMenu');
+
+    menuBtn.onclick = () => {
+      navMenu.classList.toggle('active');
+    }
+
+    // ANIMACIONES
+
+    ScrollReveal().reveal('.card', {
+      distance:'50px',
+      duration:1200,
+      interval:200,
+      origin:'bottom'
+    });
+
+    ScrollReveal().reveal('.service-box', {
+      distance:'50px',
+      duration:1200,
+      interval:200,
+      origin:'bottom'
+    });
+
+    ScrollReveal().reveal('.testimonial', {
+      distance:'50px',
+      duration:1200,
+      interval:200,
+      origin:'bottom'
+    });
+
+    
+
+  </script>
+
+</body>
+</html>
+```
